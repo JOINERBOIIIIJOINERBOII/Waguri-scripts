@@ -2,24 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Waguri Script Hub ✨ | Premium Roblox Scripts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waguri Script Hub ✨</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            user-select: none; /* makes it feel more like an app, but text can still be copied if needed */
         }
 
         body {
-            font-family: 'Poppins', 'Segoe UI', 'Quicksand', system-ui, -apple-system, sans-serif;
+            font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, sans-serif;
             min-height: 100vh;
             overflow-x: hidden;
             color: #fff6f0;
         }
 
-        /* ---------- WAGURI MOVING BACKGROUND (gradient + floating particles) ---------- */
+        /* Moving Background */
         .waguri-bg {
             position: fixed;
             top: 0;
@@ -38,7 +37,7 @@
             100% { background-position: 0% 30%; }
         }
 
-        /* floating glowing particles (hearts + stars) */
+        /* Floating particles */
         .floating-waguri {
             position: fixed;
             top: 0;
@@ -49,6 +48,7 @@
             pointer-events: none;
             overflow: hidden;
         }
+        
         .wag-particle {
             position: absolute;
             font-size: 20px;
@@ -57,20 +57,15 @@
             animation: floatWaguri linear infinite;
             pointer-events: none;
         }
+        
         @keyframes floatWaguri {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
             15% { opacity: 0.8; }
             85% { opacity: 0.8; }
-            100% {
-                transform: translateY(-120px) rotate(360deg);
-                opacity: 0;
-            }
+            100% { transform: translateY(-120px) rotate(360deg); opacity: 0; }
         }
 
-        /* cherry blossom petals (extra moe) */
+        /* Sakura petals */
         .sakura-petal {
             position: absolute;
             background: #ffb7c5;
@@ -79,29 +74,23 @@
             border-radius: 80% 0 60% 40%;
             opacity: 0.5;
             transform: rotate(45deg);
-            filter: blur(0.6px);
             pointer-events: none;
             animation: fallSakura linear infinite;
         }
+        
         @keyframes fallSakura {
-            0% {
-                transform: translateY(-50px) rotate(0deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(-50px) rotate(0deg); opacity: 0; }
             20% { opacity: 0.7; }
             80% { opacity: 0.5; }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
         }
 
-        /* music player (kawaii style) */
+        /* Music Player */
         .music-player {
             position: fixed;
             bottom: 22px;
             right: 22px;
-            background: rgba(20, 8, 18, 0.75);
+            background: rgba(20, 8, 18, 0.85);
             backdrop-filter: blur(12px);
             border-radius: 60px;
             padding: 10px 18px;
@@ -114,27 +103,29 @@
             transition: 0.25s;
             box-shadow: 0 8px 20px rgba(255, 105, 180, 0.2);
         }
+        
         .music-player:hover {
             background: #ff69b4cc;
             transform: scale(1.03);
-            border-color: #fff0f5;
         }
+        
         .music-icon {
             font-size: 24px;
             animation: wagMusicBeat 1s infinite ease;
         }
+        
         @keyframes wagMusicBeat {
-            0%, 100% { transform: scale(1); text-shadow: 0 0 2px #ffc0cb; }
+            0%, 100% { transform: scale(1); }
             50% { transform: scale(1.15); text-shadow: 0 0 12px #ff69b4; }
         }
+        
         .music-text {
             font-size: 13px;
             font-weight: 600;
-            letter-spacing: 1px;
             color: #ffe4f0;
         }
 
-        /* main container */
+        /* Container */
         .container {
             max-width: 1300px;
             margin: 0 auto;
@@ -143,11 +134,12 @@
             z-index: 2;
         }
 
-        /* header waguri style */
+        /* Header */
         .header {
             text-align: center;
             margin-bottom: 40px;
         }
+        
         .header h1 {
             font-size: 54px;
             font-weight: 800;
@@ -157,47 +149,50 @@
             background-clip: text;
             color: transparent;
             animation: waguriShine 4s linear infinite;
-            letter-spacing: -0.5px;
-            text-shadow: 0 0 15px #ff99cc80;
+            cursor: pointer;
         }
+        
         @keyframes waguriShine {
             0% { background-position: 0% 50%; }
             100% { background-position: 200% 50%; }
         }
+        
         .header p {
             color: #ffcfdf;
-            font-weight: 400;
             margin-top: 10px;
             background: rgba(0,0,0,0.3);
             display: inline-block;
             padding: 5px 20px;
             border-radius: 60px;
-            backdrop-filter: blur(4px);
             font-size: 14px;
         }
 
-        /* Script Cards Grid */
+        /* Script Cards */
         .scripts-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
             gap: 28px;
             margin: 40px 0 30px;
         }
+        
         .script-card {
             background: rgba(20, 8, 18, 0.6);
             backdrop-filter: blur(12px);
             border-radius: 32px;
             padding: 1.5rem;
             border: 1px solid rgba(255, 128, 179, 0.5);
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            transition: all 0.3s;
             box-shadow: 0 18px 30px -12px rgba(0,0,0,0.4);
+            position: relative;
+            overflow: hidden;
         }
+        
         .script-card:hover {
             transform: translateY(-8px);
             border-color: #ff80b3;
             background: rgba(30, 12, 25, 0.75);
-            box-shadow: 0 25px 35px -12px #ff69b450;
         }
+        
         .script-title {
             font-size: 24px;
             font-weight: 700;
@@ -206,30 +201,27 @@
             background-clip: text;
             color: transparent;
             margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
+        
         .script-desc {
             font-size: 13px;
             color: #ffdddd;
             margin-bottom: 18px;
             opacity: 0.85;
-            line-height: 1.4;
         }
+        
         .loadstring-box {
             background: #0a0308cc;
             padding: 14px;
             border-radius: 20px;
-            font-family: 'JetBrains Mono', 'Fira Code', monospace;
-            font-size: 12px;
+            font-family: monospace;
+            font-size: 11px;
             color: #c0ffb0;
             word-break: break-all;
             margin-bottom: 18px;
             border-left: 4px solid #ff69b4;
-            white-space: pre-wrap;
-            transition: 0.1s;
         }
+        
         .copy-btn {
             background: linear-gradient(115deg, #ff69b4, #ff3b8c);
             border: none;
@@ -239,21 +231,16 @@
             font-weight: bold;
             color: white;
             font-size: 15px;
-            letter-spacing: 1px;
             cursor: pointer;
             transition: 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
         }
+        
         .copy-btn:hover {
             background: #ff3f8e;
             transform: scale(1.02);
-            box-shadow: 0 6px 18px #ff5ca3;
         }
 
-        /* admin panel (secret) */
+        /* Admin Panel */
         .add-script {
             background: rgba(0,0,0,0.65);
             backdrop-filter: blur(20px);
@@ -262,11 +249,13 @@
             margin-top: 50px;
             border: 1px solid #ff99cc;
         }
+        
         .add-script h3 {
             font-size: 22px;
             margin-bottom: 18px;
             color: #ffb7d2;
         }
+        
         .add-script input, .add-script textarea {
             width: 100%;
             background: #2d1a26;
@@ -276,8 +265,8 @@
             margin-bottom: 16px;
             color: white;
             font-family: monospace;
-            font-size: 14px;
         }
+        
         .add-script button {
             background: #ff69b4;
             padding: 12px 28px;
@@ -286,8 +275,8 @@
             font-weight: bold;
             color: #1e0c15;
             cursor: pointer;
-            transition: 0.2s;
         }
+        
         .footer {
             text-align: center;
             font-size: 12px;
@@ -296,13 +285,9 @@
             border-top: 1px dashed #ff85b9;
             color: #ffb7cc;
         }
-        .footer a {
-            color: #ffbcd6;
-            text-decoration: none;
-        }
+
         @media (max-width: 650px) {
             .header h1 { font-size: 38px; }
-            .scripts-grid { gap: 18px; }
         }
     </style>
 </head>
@@ -311,180 +296,122 @@
 <div class="waguri-bg"></div>
 <div class="floating-waguri" id="waguriParticles"></div>
 
-<!-- Music Player (kawaii) -->
 <div class="music-player" id="musicWidget">
     <span class="music-icon">🎀</span>
     <span class="music-text">Waguri BGM ～☆</span>
-    <audio id="bgmAudio" loop preload="auto"></audio>
+    <audio id="bgmAudio" loop></audio>
 </div>
 
 <div class="container">
     <div class="header">
-        <h1>🎀 WAGURI SCRIPT HUB 🎀</h1>
+        <h1 id="waguriTitle">🎀 WAGURI SCRIPT HUB 🎀</h1>
         <p>✦ premium roblox scripts | murder mystery 2 | auto-joiner | bomb jump ✦</p>
     </div>
 
     <div class="scripts-grid" id="scriptsContainer">
-        <!-- dynamic scripts injected here -->
         <div style="grid-column: 1/-1; text-align: center; color: #ffbbd4;">✨ loading waguri magic... ✨</div>
     </div>
 
-    <!-- Secret admin panel (hidden, click logo 5 times) -->
     <div class="add-script" id="secretAdminPanel" style="display: none;">
         <h3>🌸 WAGURI ADMIN (add your own script) 🌸</h3>
-        <input type="text" id="scriptName" placeholder="Script name e.g., Waguri Godmode">
+        <input type="text" id="scriptName" placeholder="Script name">
         <input type="text" id="scriptDesc" placeholder="Short description">
         <textarea id="scriptLoadstringRaw" rows="3" placeholder="loadstring(game:HttpGet('https://...'))()"></textarea>
         <button id="addScriptBtn">💾 add to hub</button>
-        <p style="font-size: 11px; margin-top: 8px;">💖 scripts saved locally in your browser</p>
     </div>
 
     <div class="footer">
         <span>💗 made with waguri energy 💗</span><br>
-        <span>follow tiktok: @waguriii.wow | all scripts are obfuscated but safe</span>
+        <span>follow tiktok: @waguriii.wow</span>
     </div>
 </div>
 
 <script>
-    // ---------- WAGURI MOVING BACKGROUND: HEARTS + SAKURA PETALS ----------
+    // Create floating particles
     const particlesContainer = document.getElementById('waguriParticles');
-    const wagEmojis = ['🌸', '💖', '🎀', '✨', '💕', '🍥', '⭐', '💗', '🦋', '🍰'];
+    const wagEmojis = ['🌸', '💖', '🎀', '✨', '💕', '🍥', '⭐', '💗'];
     
-    function createWaguriParticle() {
+    function createParticle() {
         const particle = document.createElement('div');
         particle.classList.add('wag-particle');
-        const isHeart = Math.random() > 0.6;
-        particle.innerHTML = isHeart ? '💖' : wagEmojis[Math.floor(Math.random() * wagEmojis.length)];
+        particle.innerHTML = wagEmojis[Math.floor(Math.random() * wagEmojis.length)];
         particle.style.left = Math.random() * 100 + '%';
         particle.style.fontSize = (Math.random() * 18 + 14) + 'px';
-        const duration = Math.random() * 5 + 5;
-        particle.style.animationDuration = duration + 's';
-        particle.style.animationDelay = Math.random() * 3 + 's';
+        particle.style.animationDuration = (Math.random() * 5 + 5) + 's';
         particlesContainer.appendChild(particle);
-        setTimeout(() => particle.remove(), duration * 1000);
+        setTimeout(() => particle.remove(), 8000);
     }
-
-    function createSakuraPetal() {
+    
+    function createPetal() {
         const petal = document.createElement('div');
         petal.classList.add('sakura-petal');
         petal.style.left = Math.random() * 100 + '%';
         petal.style.width = (Math.random() * 8 + 6) + 'px';
         petal.style.height = (Math.random() * 8 + 6) + 'px';
-        petal.style.background = `rgba(255, ${Math.floor(160 + Math.random() * 70)}, 190, 0.7)`;
         petal.style.animationDuration = Math.random() * 5 + 4 + 's';
-        petal.style.animationDelay = Math.random() * 4 + 's';
         document.body.appendChild(petal);
         setTimeout(() => petal.remove(), 7000);
     }
     
-    setInterval(createWaguriParticle, 650);
-    setInterval(createSakuraPetal, 500);
+    setInterval(createParticle, 700);
+    setInterval(createPetal, 550);
     
-    // ---------- MUSIC (kawaii lo-fi / piano bg) ----------
+    // Music
     const audio = document.getElementById('bgmAudio');
     const musicWidget = document.getElementById('musicWidget');
     let musicPlaying = false;
-    // use a cute royalty-free anime-style bgm (this one is safe and peaceful)
-    audio.src = 'https://cdn.pixabay.com/download/audio/2022/05/16/audio_c8c8d6b3c0.mp3'; // public domain relaxing piano
+    audio.src = 'https://cdn.pixabay.com/download/audio/2022/05/16/audio_c8c8d6b3c0.mp3';
     audio.loop = true;
-    audio.volume = 0.35;
+    audio.volume = 0.3;
     
     musicWidget.addEventListener('click', () => {
         if (musicPlaying) {
             audio.pause();
             musicPlaying = false;
-            musicWidget.style.opacity = '0.7';
         } else {
-            audio.play().catch(e => console.log('autoplay blocked, click first'));
+            audio.play().catch(e => console.log('click first'));
             musicPlaying = true;
-            musicWidget.style.opacity = '1';
         }
     });
     
-    // ---------- SCRIPTS DATA (WAGURI MAIN + BOMB JUMP + additional demos) ----------
+    // Scripts data
     let scriptsLibrary = [
         {
             id: 1,
             name: "🌸 WAGURI MM2 HUB",
-            description: "Complete Murder Mystery 2 utility: silent aim, esp, auto farm, fling, role display, wallbang, delta bypass and more.",
+            description: "Complete Murder Mystery 2 utility: silent aim, esp, auto farm, fling, role display, wallbang, delta bypass.",
             loadstring: `loadstring(game:HttpGet("https://raw.githubusercontent.com/Waguriiiii/Murder-mystery-2/refs/heads/main/Waguri.lua"))()`
         },
         {
             id: 2,
             name: "🎀 WAGURI BOMB JUMP",
-            description: "Insane bomb jump / fake bomb effect + super jump for MM2. Toggle fake bomb and fly across the map!",
+            description: "Insane bomb jump / fake bomb effect + super jump for MM2.",
             loadstring: `loadstring(game:HttpGet("https://raw.githubusercontent.com/waguri-mm2/Murder-mystery-2/refs/heads/main/Waguri-bomb-jump.lua"))()`
         },
         {
             id: 3,
-            name: "💖 Waguri Auto-Joiner (trade stealer)",
-            description: "Auto join victims, accept trades + delta bypass & loop system. Use with your own webhook.",
-            loadstring: `--[[ Waguri Auto-Joiner: place your webhook and target ]] --\nloadstring(game:HttpGet("https://pastefy.app/your-paste-id/raw"))()  -- replace with your own url`
-        },
-        {
-            id: 4,
-            name: "✨ Waguri Silent Aim + Wallbang",
-            description: "Improved wallbang / silent aim for MM2, murderer tracking and instant shoot.",
-            loadstring: `loadstring(game:HttpGet("https://raw.githubusercontent.com/Waguriiiii/Murder-mystery-2/main/Waguri-silent.lua"))() -- waguri edition`
+            name: "💖 Waguri Silent Aim",
+            description: "Advanced silent aim + wallbang with murderer tracking.",
+            loadstring: `--[[ Waguri Silent Aim ]] --\nloadstring(game:HttpGet("https://raw.githubusercontent.com/Waguriiiii/Murder-mystery-2/main/silent.lua"))()`
         }
     ];
     
-    // load stored scripts from localStorage
-    function loadStoredScripts() {
-        const stored = localStorage.getItem('waguri_custom_scripts');
+    // Load saved scripts
+    function loadStored() {
+        const stored = localStorage.getItem('waguri_scripts');
         if (stored) {
             try {
                 const custom = JSON.parse(stored);
-                if (Array.isArray(custom) && custom.length) {
-                    // merge with default but avoid duplicates by id? simple: replace custom part
-                    const defaultIds = new Set(scriptsLibrary.map(s => s.id));
-                    const newCustom = custom.filter(c => !defaultIds.has(c.id));
-                    scriptsLibrary = [...scriptsLibrary, ...newCustom];
-                }
+                const existingIds = new Set(scriptsLibrary.map(s => s.id));
+                const newScripts = custom.filter(c => !existingIds.has(c.id));
+                scriptsLibrary = [...scriptsLibrary, ...newScripts];
             } catch(e) {}
         }
     }
     
-    function saveCustomScripts() {
-        const customScripts = scriptsLibrary.filter(s => s.id > 4);
-        localStorage.setItem('waguri_custom_scripts', JSON.stringify(customScripts));
-    }
-    
-    function renderScripts() {
-        const container = document.getElementById('scriptsContainer');
-        if (!container) return;
-        if (scriptsLibrary.length === 0) {
-            container.innerHTML = '<div style="grid-column:1/-1; text-align:center;">✨ no scripts yet, add with admin panel ✨</div>';
-            return;
-        }
-        container.innerHTML = scriptsLibrary.map(script => `
-            <div class="script-card" data-id="${script.id}">
-                <div class="script-title">
-                    <span>${script.name.includes('WAGURI') ? '🎀' : '🌸'} ${escapeHtml(script.name)}</span>
-                </div>
-                <div class="script-desc">${escapeHtml(script.description)}</div>
-                <div class="loadstring-box" id="loadstr-${script.id}">${escapeHtml(script.loadstring.length > 90 ? script.loadstring.substring(0, 80) + '…' : script.loadstring)}</div>
-                <button class="copy-btn" data-id="${script.id}">📋 COPY FULL LOADSTRING</button>
-            </div>
-        `).join('');
-        
-        // attach copy events
-        document.querySelectorAll('.copy-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const cardDiv = btn.closest('.script-card');
-                if (!cardDiv) return;
-                const scriptId = parseInt(cardDiv.dataset.id);
-                const foundScript = scriptsLibrary.find(s => s.id === scriptId);
-                if (foundScript) {
-                    navigator.clipboard.writeText(foundScript.loadstring);
-                    const originalText = btn.innerHTML;
-                    btn.innerHTML = '✅ COPIED! 💕';
-                    setTimeout(() => { btn.innerHTML = originalText; }, 1500);
-                } else {
-                    alert('🌸 script not found');
-                }
-            });
-        });
+    function saveScripts() {
+        const custom = scriptsLibrary.filter(s => s.id > 3);
+        localStorage.setItem('waguri_scripts', JSON.stringify(custom));
     }
     
     function escapeHtml(str) {
@@ -494,116 +421,91 @@
             if (m === '<') return '&lt;';
             if (m === '>') return '&gt;';
             return m;
-        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
-            return c;
         });
     }
     
-    // add new script (admin)
-    function addCustomScript() {
-        const nameInput = document.getElementById('scriptName');
-        const descInput = document.getElementById('scriptDesc');
-        const loadInput = document.getElementById('scriptLoadstringRaw');
-        const name = nameInput.value.trim();
-        const desc = descInput.value.trim() || "waguri custom script";
-        const lstr = loadInput.value.trim();
-        if (!name || !lstr) {
-            alert("🌸 please fill script name and loadstring");
+    function renderScripts() {
+        const container = document.getElementById('scriptsContainer');
+        if (!container) return;
+        
+        if (scriptsLibrary.length === 0) {
+            container.innerHTML = '<div style="grid-column:1/-1; text-align:center;">✨ no scripts yet ✨</div>';
             return;
         }
+        
+        container.innerHTML = scriptsLibrary.map(script => `
+            <div class="script-card" data-id="${script.id}">
+                <div class="script-title">${escapeHtml(script.name)}</div>
+                <div class="script-desc">${escapeHtml(script.description)}</div>
+                <div class="loadstring-box" id="loadstr-${script.id}">${escapeHtml(script.loadstring.substring(0, 80))}${script.loadstring.length > 80 ? '…' : ''}</div>
+                <button class="copy-btn" data-id="${script.id}">📋 COPY FULL LOADSTRING</button>
+            </div>
+        `).join('');
+        
+        // Attach copy events
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const card = btn.closest('.script-card');
+                const id = parseInt(card.dataset.id);
+                const script = scriptsLibrary.find(s => s.id === id);
+                if (script) {
+                    navigator.clipboard.writeText(script.loadstring);
+                    const original = btn.innerHTML;
+                    btn.innerHTML = '✅ COPIED!';
+                    setTimeout(() => { btn.innerHTML = original; }, 1500);
+                }
+            });
+        });
+    }
+    
+    // Add custom script
+    function addScript() {
+        const name = document.getElementById('scriptName').value.trim();
+        const desc = document.getElementById('scriptDesc').value.trim();
+        const loadstr = document.getElementById('scriptLoadstringRaw').value.trim();
+        
+        if (!name || !loadstr) {
+            alert('Please fill name and loadstring');
+            return;
+        }
+        
         const newId = Math.max(...scriptsLibrary.map(s => s.id), 0) + 1;
         scriptsLibrary.push({
             id: newId,
             name: name,
-            description: desc,
-            loadstring: lstr
+            description: desc || 'Waguri custom script',
+            loadstring: loadstr
         });
-        saveCustomScripts();
+        
+        saveScripts();
         renderScripts();
-        nameInput.value = '';
-        descInput.value = '';
-        loadInput.value = '';
-        alert(`✅ added "${name}" to Waguri hub!`);
+        
+        document.getElementById('scriptName').value = '';
+        document.getElementById('scriptDesc').value = '';
+        document.getElementById('scriptLoadstringRaw').value = '';
+        
+        alert('✅ Script added!');
     }
     
-    // secret admin panel: click main title 5 times
-    let clickCounter = 0;
-    const titleElem = document.querySelector('.header h1');
-    if (titleElem) {
-        titleElem.addEventListener('click', () => {
-            clickCounter++;
-            if (clickCounter === 5) {
-                const panel = document.getElementById('secretAdminPanel');
-                if (panel) panel.style.display = 'block';
-                clickCounter = 0;
-                setTimeout(() => {
-                    // optional auto-hide after 2 minutes? not needed
-                }, 1000);
-            }
-            setTimeout(() => { if (clickCounter < 5) clickCounter = 0; }, 2500);
-        });
-    }
+    // Secret admin panel (click title 5 times)
+    let clickCount = 0;
+    const title = document.getElementById('waguriTitle');
+    title.addEventListener('click', () => {
+        clickCount++;
+        if (clickCount === 5) {
+            document.getElementById('secretAdminPanel').style.display = 'block';
+            clickCount = 0;
+        }
+        setTimeout(() => { clickCount = 0; }, 3000);
+    });
     
-    // add button listener
-    document.getElementById('addScriptBtn')?.addEventListener('click', addCustomScript);
+    document.getElementById('addScriptBtn').addEventListener('click', addScript);
     
-    // init: load stored scripts + render
-    loadStoredScripts();
+    // Initialize
+    loadStored();
     renderScripts();
     
-    // extra glow: update description tooltips
-    console.log('🌸 waguri hub loaded — moving background, music, floating hearts, sakura 🌸');
-    
-    // add some random sparkle effect on cards
-    const styleSpark = document.createElement('style');
-    styleSpark.textContent = `
-        .script-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 20%, rgba(255,200,220,0.1), transparent 70%);
-            pointer-events: none;
-            border-radius: 32px;
-        }
-        .script-card { position: relative; overflow: hidden; }
-    `;
-    document.head.appendChild(styleSpark);
-    
-    // additional effect: wiggle cursor
-    const cards = document.querySelectorAll('.script-card');
-    // heartbeat effect for music button
-    setInterval(() => {
-        if (musicPlaying) {
-            const icon = document.querySelector('.music-icon');
-            if (icon) icon.style.transform = 'scale(1.08)';
-            setTimeout(() => { if(icon) icon.style.transform = 'scale(1)'; }, 300);
-        }
-    }, 800);
-    
-    // add anti-spam protection for copy
-    // also make sure bomb-jump loadstring is exactly the one provided
-    const bombJumpIndex = scriptsLibrary.findIndex(s => s.name.includes("BOMB JUMP"));
-    if (bombJumpIndex !== -1) {
-        scriptsLibrary[bombJumpIndex].loadstring = `loadstring(game:HttpGet("https://raw.githubusercontent.com/waguri-mm2/Murder-mystery-2/refs/heads/main/Waguri-bomb-jump.lua"))()`;
-    }
-    const mm2HubIndex = scriptsLibrary.findIndex(s => s.name.includes("WAGURI MM2 HUB"));
-    if (mm2HubIndex !== -1) {
-        scriptsLibrary[mm2HubIndex].loadstring = `loadstring(game:HttpGet("https://raw.githubusercontent.com/Waguriiiii/Murder-mystery-2/refs/heads/main/Waguri.lua"))()`;
-    }
-    renderScripts(); // re-render to show exact loadstrings
-    
-    // little detail: show date + waguri announcement
-    const footer = document.querySelector('.footer');
-    if (footer) {
-        const dateSpan = document.createElement('div');
-        dateSpan.style.marginTop = '6px';
-        dateSpan.style.fontSize = '10px';
-        dateSpan.innerHTML = `🎀 waguri update · ${new Date().toLocaleDateString()} · always safe`;
-        footer.appendChild(dateSpan);
-    }
+    console.log('🌸 Waguri Hub loaded!');
 </script>
 </body>
 </html>
